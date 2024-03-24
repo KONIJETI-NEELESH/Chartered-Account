@@ -1,43 +1,43 @@
 const carouselData = [
-    {
-      image: 'https://www.grandmarkca.com/wp-content/uploads/2018/12/GM_Services_Banner_Insolvency.jpg',
-      title: 'INSOLVENCY \n PROFESSIONALS'
-    },
-    {
-      image: 'https://www.grandmarkca.com/wp-content/uploads/2018/12/GM_Inside_Banner_Tax-Consulting.jpg',
-      title: 'TAX CONSULTING'
-    },
-    {
-      image: 'https://www.grandmarkca.com/wp-content/uploads/2018/12/GM_Services_Banner_AUDITASSURANCE.jpg',
-      title: 'AUDIT & ASSURANCE',
-    },
-  ];
+  {
+    image: 'https://www.grandmarkca.com/wp-content/uploads/2018/12/GM_Services_Banner_Insolvency.jpg',
+    title: 'INSOLVENCY \n PROFESSIONALS'
+  },
+  {
+    image: 'https://www.grandmarkca.com/wp-content/uploads/2018/12/GM_Inside_Banner_Tax-Consulting.jpg',
+    title: 'TAX CONSULTING'
+  },
+  {
+    image: 'https://www.grandmarkca.com/wp-content/uploads/2018/12/GM_Services_Banner_AUDITASSURANCE.jpg',
+    title: 'AUDIT & ASSURANCE',
+  },
+];
 
-  const autoplayInterval = 3000;
-  let currentImageIndex = 0;
+const autoplayInterval = 3000;
+let currentImageIndex = 0;
 
-  const carouselContainer = document.getElementById('autoplay-carousel');
+const carouselContainer = document.getElementById('autoplay-carousel');
 
-  function goToPreviousImage() {
-    const newIndex = (currentImageIndex - 1 + carouselData.length) % carouselData.length;
-    const imgContainers = document.getElementsByClassName('img-container');
-    for (let i = 0; i < imgContainers.length; i++) {
-      imgContainers[i].style.transition = 'opacity 1s ease-in-out';
-    }
-    currentImageIndex = newIndex;
-    renderCarousel();
+function goToPreviousImage() {
+  const newIndex = (currentImageIndex - 1 + carouselData.length) % carouselData.length;
+  const imgContainers = document.getElementsByClassName('img-container');
+  for (let i = 0; i < imgContainers.length; i++) {
+    imgContainers[i].style.transition = 'opacity 1s ease-in-out';
   }
+  currentImageIndex = newIndex;
+  renderCarousel();
+}
 
-  function goToNextImage() {
-    const newIndex = (currentImageIndex + 1) % carouselData.length;
-    currentImageIndex = newIndex;
-    renderCarousel();
-  }
+function goToNextImage() {
+  const newIndex = (currentImageIndex + 1) % carouselData.length;
+  currentImageIndex = newIndex;
+  renderCarousel();
+}
 
-  function renderCarousel() {
-    const currentData = carouselData[currentImageIndex];
+function renderCarousel() {
+  const currentData = carouselData[currentImageIndex];
 
-    const carouselHtml = `
+  const carouselHtml = `
       <div class="autoplay-carousel-with-data">
         <button onclick="goToPreviousImage()" class="previous-btn">
           <h1 class="previous">&lt;</h1>
@@ -54,8 +54,8 @@ const carouselData = [
       </div>
     `;
 
-    carouselContainer.innerHTML = carouselHtml;
-  }
+  carouselContainer.innerHTML = carouselHtml;
+}
 
-  setInterval(goToNextImage, autoplayInterval);
-  renderCarousel();
+setInterval(goToNextImage, autoplayInterval);
+renderCarousel();
